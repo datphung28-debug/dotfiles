@@ -1,0 +1,6 @@
+# fish state (chứa token) và các file backup rác
+.config/fish/fish_variables*
+# tmux plugins là git clone, cài lại bằng tpm (prefix + I)
+.config/tmux/plugins/**
+# rác hệ điều hành
+**/.DS_Store

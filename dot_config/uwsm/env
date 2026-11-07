@@ -1,0 +1,38 @@
+#!/bin/sh
+
+case "${LANG:-}" in
+    *[Uu][Tt][Ff]8* | *[Uu][Tt][Ff]-8*)
+        ;;
+    *)
+        export LC_CTYPE="C.UTF-8"
+        ;;
+esac
+
+# Qt
+export QT_QPA_PLATFORM="wayland;xcb"
+export QT_QPA_PLATFORMTHEME=qt6ct
+export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+
+# GTK
+export GDK_BACKEND="wayland,x11"
+
+# Java
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+# Cursor
+export XCURSOR_THEME=Bibata-Modern-Classic
+export XCURSOR_SIZE=18
+
+# Default Applications
+export TERMINAL=kitty
+export EDITOR=nvim
+export VISUAL=nvim
+
+# SDL
+export SDL_VIDEODRIVER="wayland,x11"
+
+# Clutter
+export CLUTTER_BACKEND=wayland
+
+# Libvirt
+export LIBVIRT_DEFAULT_URI='qemu:///system'
