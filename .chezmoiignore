@@ -4,3 +4,5 @@
 .config/tmux/plugins/**
 # rác hệ điều hành
 **/.DS_Store
+# README của repo, không apply vào $HOME
+README.md
