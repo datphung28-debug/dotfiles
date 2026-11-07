@@ -22,7 +22,7 @@ hl.config({
 
     blur = {
       enabled = true,
-      size = 30,
+      size = 25,
       passes = 3,
       ignore_opacity = true,
 

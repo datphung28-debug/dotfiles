@@ -5,3 +5,7 @@ source /usr/share/cachyos-zsh-config/cachyos-config.zsh
 export PATH="/home/admin/.local/bin:$PATH"
 
 . "$HOME/.local/share/../bin/env"
+
+# >>> serpantinum theme >>>
+[ -f ~/.config/fzf/serpantinum.sh ] && . ~/.config/fzf/serpantinum.sh
+# <<< serpantinum theme <<<

@@ -2,17 +2,6 @@
 prefer = "saturation"
 
 
-[templates.cava]
-input_path  = '~/.config/matugen/templates/cava-colors.ini'
-output_path = '~/.config/matugen/generated/cava-colors.ini'
-post_hook   = 'command -v cava >/dev/null 2>&1 && ln -nfs "$HOME/.config/matugen/generated/cava-colors.ini" "$HOME/.config/cava/themes/cava-colors.ini" && pkill -USR1 -x cava || :'
-
-[templates.btop]
-input_path  = '~/.config/matugen/templates/btop.theme'
-output_path = '~/.config/matugen/generated/btop-colors.theme'
-post_hook   = 'command -v btop >/dev/null 2>&1 && ln -nfs "$HOME/.config/matugen/generated/btop-colors.theme" "$HOME/.config/btop/themes/matugen.theme" || :'
-
-
 [templates.quickshell]
 input_path = "~/.config/matugen/templates/qs_colors.json.template"
 output_path = "~/.config/matugen/generated/qs_colors.json"
@@ -27,32 +16,6 @@ post_hook = '''
   command -v pywalfox >/dev/null 2>&1 && pywalfox update || :
 '''
 
-# GTK & Qt
-[templates.qt5ct]
-input_path = "~/.config/matugen/templates/qtct.conf.template"
-output_path = "~/.config/qt5ct/colors/matugen.conf"
-
-[templates.qt6ct]
-input_path = "~/.config/matugen/templates/qtct.conf.template"
-output_path = "~/.config/qt6ct/colors/matugen.conf"
-
-[templates.qt5_style]
-input_path = "~/.config/matugen/templates/qt-style.qss.template"
-output_path = "~/.config/qt5ct/qss/matugen-style.qss"
-
-[templates.qt6_style]
-input_path = "~/.config/matugen/templates/qt-style.qss.template"
-output_path = "~/.config/qt6ct/qss/matugen-style.qss"
-
-[templates.gtk]
-input_path = "~/.config/matugen/templates/gtk-colors.css.template"
-output_path = "~/.cache/matugen/colors-gtk.css"
-post_hook = '''
-  mkdir -p "$HOME/.config/gtk-3.0" "$HOME/.config/gtk-4.0"
-  printf '@import url("file://%s/.cache/matugen/colors-gtk.css");\n' "$HOME" > "$HOME/.config/gtk-3.0/gtk.css"
-  printf '@import url("file://%s/.cache/matugen/colors-gtk.css");\n' "$HOME" > "$HOME/.config/gtk-4.0/gtk.css"
-'''
-
 [templates.icon_theme]
 input_path  = '/dev/null'
 output_path = '/dev/null'
@@ -63,15 +26,6 @@ post_hook   = '''
 [templates.rofi]
 input_path  = '~/.config/matugen/templates/rofi-colors.rasi'
 output_path = '~/.config/matugen/generated/rofi-colors.rasi'
-
-[templates.kitty]
-input_path  = '~/.config/matugen/templates/kitty-colors.conf.template'
-output_path = '~/.config/matugen/generated/kitty-colors.conf'
-post_hook   = '''
-  ln -nfs "$HOME/.config/matugen/generated/kitty-colors.conf" "$HOME/.config/kitty/kitty-colors.conf"
-  pkill -SIGUSR1 -x kitty || :
-'''
-
 
 [templates.hyprland]
 input_path  = '~/.config/matugen/templates/hyprland-colors.lua'
@@ -99,11 +53,4 @@ input_path  = '~/.config/matugen/templates/kvantum-colors.svg'
 output_path = '~/.config/matugen/generated/kvantum-matugen.svg'
 post_hook   = '''
   ln -nfs "$HOME/.config/matugen/generated/kvantum-matugen.svg" "$HOME/.config/Kvantum/matugen/matugen.svg"
-'''
-
-[templates.yazi]
-input_path  = '~/.config/matugen/templates/yazi-theme.toml'
-output_path = '~/.config/matugen/generated/yazi-theme.toml'
-post_hook   = '''
-  ln -nfs "$HOME/.config/matugen/generated/yazi-theme.toml" "$HOME/.config/yazi/theme.toml"
 '''

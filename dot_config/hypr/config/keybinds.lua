@@ -36,7 +36,32 @@ local function cond_bind(key, default_dsp, flags)
   end, flags)
 end
 
--- Application Launchers --
+-- App launchers --
+hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal), { description = "Launch Terminal" })
+
+hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser), { description = "Launch Browser" })
+
+hl.bind("SUPER + E", hl.dsp.exec_cmd(fileManager), { description = "Launch File Manager" })
+
+hl.bind(
+  "CTRL + SHIFT + escape",
+  hl.dsp.exec_cmd(terminal .. " --class btop -e btop"),
+  { description = "System Monitor" }
+)
+
+hl.bind(
+  mainMod .. " + P",
+  hl.dsp.exec_cmd(
+    "pkill rofi; rofi -show power-menu -modi power-menu:" .. SCRIPTS .. "rofi/powermenu.sh -no-fixed-num-lines -i"
+  ),
+  { description = "Power Menu" }
+)
+
+hl.bind("SUPER + P", hl.dsp.exec_cmd("pkill hyprpicker || hyprpicker -a"), { description = "Color Picker" })
+
+hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("rain-clock gui"), { description = "Rain Clock Settings Panel" })
+
+-- Window management --
 hl.bind(mainMod .. " + Q", hl.dsp.window.close(), { description = "Close Window" })
 
 hl.bind(
@@ -53,36 +78,6 @@ hl.bind(
 
 hl.bind("SUPER + J", hl.dsp.layout("togglesplit"), { description = "Toggle Window Split" })
 
-hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal), { description = "Launch Terminal" })
-
-hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser), { description = "Launch Browser" })
-
-hl.bind("SUPER + E", hl.dsp.exec_cmd(fileManager), { description = "Launch File Manager" })
-
--- hl.bind(
---   mainMod .. " + SPACE",
---   hl.dsp.exec_cmd([[pkill rofi; rofi -show drun]]),
---   { description = "Launch Menu for Apps"}
--- )
-
-hl.bind(
-  mainMod .. " + P",
-  hl.dsp.exec_cmd(
-    "pkill rofi; rofi -show power-menu -modi power-menu:" .. SCRIPTS .. "rofi/powermenu.sh -no-fixed-num-lines -i"
-  ),
-  { description = "Power Menu" }
-)
-
-hl.bind(
-  "CTRL + SHIFT + escape",
-  hl.dsp.exec_cmd(terminal .. " --class btop -e btop"),
-  { description = "System Monitor" }
-)
-
-hl.bind("SUPER + P", hl.dsp.exec_cmd("pkill hyprpicker || hyprpicker -a"), { description = "Color Picker" })
-
-hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("rain-clock gui"), { description = "Rain Clock Settings Panel" })
-
 hl.bind(
   "SUPER + D",
   hl.dsp.exec_cmd([[
@@ -98,20 +93,10 @@ hl.bind(
   { description = "Smart Float" }
 )
 
--- Screenshot
-hl.bind(
-  mainMod .. " + S",
-  hl.dsp.exec_cmd([[grim -g "$(slurp)" - | wl-copy]]),
-  { description = "Screenshot to clipboard" }
-)
+hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
+hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
-hl.bind(
-  mainMod .. " + SHIFT + S",
-  hl.dsp.exec_cmd([[grim -g "$(slurp)" ~/Pictures/Screenshots/Screenshot_$(date +%Y-%m-%d_%H-%M-%S).png]]),
-  { description = "Save screenshot" }
-)
-
--- Foccus Movement --
+-- Focus movement --
 hl.bind(mainMod .. " + H", hl.dsp.focus({ direction = "l" }), { description = "Focus Left", repeating = true })
 
 hl.bind(mainMod .. " + L", hl.dsp.focus({ direction = "r" }), { description = "Focus Right", repeating = true })
@@ -120,7 +105,7 @@ hl.bind(mainMod .. " + K", hl.dsp.focus({ direction = "u" }), { description = "F
 
 hl.bind(mainMod .. " + J", hl.dsp.focus({ direction = "d" }), { description = "Focus Down", repeating = true })
 
--- Window Movement --
+-- Window movement --
 hl.bind(
   mainMod .. " + SHIFT + H",
   hl.dsp.window.move({ direction = "l" }),
@@ -145,7 +130,7 @@ hl.bind(
   { description = "Move Down", repeating = true }
 )
 
--- Window Resizing --
+-- Window resizing --
 hl.bind(
   mainMod .. " + Right",
   hl.dsp.window.resize({ x = 30, y = 0, relative = true }),
@@ -170,14 +155,13 @@ hl.bind(
   { description = "Resize Height +", repeating = true }
 )
 
--- Workspace Management --
+-- Workspaces --
 hl.bind(
   mainMod .. " + TAB",
   hl.dsp.focus({ workspace = "previous" }),
   { description = "Last Workspace", repeating = true }
 )
 
--- Workspace theo monitor dang focus
 for i = 1, 10 do
   local key = tostring(i % 10)
 
@@ -202,20 +186,20 @@ for i = 1, 10 do
   )
 end
 
--- for i = 1, 10 do
---   local key = tostring(i % 10)
---   hl.bind(
---     mainMod .. " + " .. key,
---     hl.dsp.focus({ workspace = tostring(i) }),
---     { description = "Switch To Workspace " .. i }
---   )
---   hl.bind(
---     mainMod .. " + SHIFT + " .. key,
---     hl.dsp.window.move({ workspace = tostring(i) }),
---     { description = "Move Window To Workspace " .. i }
---   )
--- end
+-- Screenshots --
+hl.bind(
+  mainMod .. " + S",
+  hl.dsp.exec_cmd([[grim -g "$(slurp)" - | wl-copy]]),
+  { description = "Screenshot to clipboard" }
+)
 
+hl.bind(
+  mainMod .. " + SHIFT + S",
+  hl.dsp.exec_cmd([[grim -g "$(slurp)" ~/Pictures/Screenshots/Screenshot_$(date +%Y-%m-%d_%H-%M-%S).png]]),
+  { description = "Save screenshot" }
+)
+
+-- Hardware keys --
 hl.bind(
   "SUPER + F7",
   hl.dsp.exec_cmd("ddcutil setvcp 10 - 5"),
@@ -227,9 +211,6 @@ hl.bind(
   hl.dsp.exec_cmd("ddcutil setvcp 10 + 5"),
   { description = "Increase Monitor Brightness", repeating = true }
 )
-
-hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
-hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- Laptop multimedia keys for volume and LCD brightness
 hl.bind(
@@ -261,19 +242,16 @@ hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = tr
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
 
+-- Serpantinum --
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("serpantinum reload"))
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("serpantinum msg toggle clipboard"))
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("serpantinum msg toggle music"))
 hl.bind("SUPER + A", hl.dsp.exec_cmd("serpantinum msg toggle system"))
 hl.bind("SUPER + W", hl.dsp.exec_cmd("serpantinum msg toggle wallpaper"))
--- hl.bind(mainMod .. " + S", hl.dsp.exec_cmd("serpantium msg toggle calendar"))
--- hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("serpantium msg toggle network"))
--- hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("serpantium msg toggle volume"))
--- hl.bind(mainMod .. " + H", hl.dsp.exec_cmd("serpantium msg toggle guide"))
--- hl.bind(mainMod .. " + A", hl.dsp.exec_cmd("serpantium msg toggle autohide"))
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd("serpantinum msg toggle launcher"))
-hl.bind(mainMod .. "+ SHIFT + L", hl.dsp.exec_cmd("serpantinum lock"), { repeating = true, locked = true })
+hl.bind( "SUPER + SHIFT + L", hl.dsp.exec_cmd("serpantinum lock"), { repeating = true, locked = true })
 
+-- Game mode --
 local SUBMAP_MANUAL_PT = "keybinds_disabled"
 
 cond_bind(mainMod .. " + SHIFT + G", function()
@@ -287,11 +265,3 @@ hl.define_submap(SUBMAP_MANUAL_PT, function()
     hl.dispatch(hl.dsp.submap("reset"))
   end, { description = "Disable Game Mode (Restore Keybinds)", locked = true })
 end)
-
---
--- for i = 1, 10 do
---   local ws = tostring(i)
---   local key = tostring(i % 10)
---   hl.bind(mainMod .. " + " .. key, hl.dsp.exec_cmd("serpantium msg workspace " .. ws))
---   hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.exec_cmd("serpantium msg workspace " .. ws .. " move"))
--- end

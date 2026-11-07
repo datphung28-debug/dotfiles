@@ -1,7 +1,7 @@
 hl.on("hyprland.start", function()
   hl.exec_cmd("wl-paste --type text --watch cliphist store")
   hl.exec_cmd("wl-paste --type image --watch cliphist store")
-  hl.exec_cmd("serpantinumd start")
   hl.exec_cmd("solaar -w hide")
+  hl.exec_cmd("serpantinumd start")
   -- hl.exec_cmd("rain-clock start")
 end)
