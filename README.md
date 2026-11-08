@@ -13,7 +13,6 @@ Lệnh này apply dotfiles và chạy `run_onchange_install-packages.sh` để c
 ## Được quản lý
 
 - **Shell**: fish (`config.fish`, `conf.d/tide.fish`, 3 function tùy chỉnh: key bindings, fzf) + `.bashrc`, `.zshrc`, `.profile`
-- **Editor**: nvim (kèm `.stylua.toml`)
 - **Terminal**: kitty, tmux (chỉ file cấu hình, không gồm plugins)
 - **Desktop**: hyprland (config Lua), matugen (templates + generated), rofi, uwsm, waybar
 - **Theme**: qt5ct, qt6ct, Kvantum, gtk-3.0, gtk-4.0, `.gtkrc-2.0`
