@@ -8,6 +8,38 @@ customCommands:
 gui:
   mouseEvents: false
   scrollHeight: 30
+  theme:
+    activeBorderColor:
+      - '#268bd2'
+      - bold
+
+    inactiveBorderColor:
+      - '#586e75'
+
+    searchingActiveBorderColor:
+      - '#b58900'
+      - bold
+
+    optionsTextColor:
+      - '#268bd2'
+
+    selectedLineBgColor:
+      - '#073642'
+
+    inactiveViewSelectedLineBgColor:
+      - '#073642'
+
+    cherryPickedCommitBgColor:
+      - '#073642'
+
+    cherryPickedCommitFgColor:
+      - '#d33682'
+
+    unstagedChangesColor:
+      - '#dc322f'
+
+    defaultFgColor:
+      - '#839496'
 git:
   autoFetch: false
   diffRenderers:

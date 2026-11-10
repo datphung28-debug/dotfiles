@@ -1,6 +1,6 @@
 local mainMod = "ALT"
 local terminal = "kitty"
-local fileManager = "nautilus"
+local fileManager = "ski"
 local browser = "firefox"
 SCRIPTS = "/home/admin/user_scripts/"
 
@@ -215,12 +215,12 @@ hl.bind(
 -- Laptop multimedia keys for volume and LCD brightness
 hl.bind(
   "XF86AudioRaiseVolume",
-  hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 2%+"),
+  hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 1%+"),
   { locked = true, repeating = true }
 )
 hl.bind(
   "XF86AudioLowerVolume",
-  hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-"),
+  hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-"),
   { locked = true, repeating = true }
 )
 hl.bind(
@@ -248,6 +248,7 @@ hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("serpantinum msg toggle clipboard"))
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("serpantinum msg toggle music"))
 hl.bind("SUPER + A", hl.dsp.exec_cmd("serpantinum msg toggle system"))
 hl.bind("SUPER + W", hl.dsp.exec_cmd("serpantinum msg toggle wallpaper"))
+hl.bind("SUPER + I", hl.dsp.exec_cmd("serpantinum msg toggle settings"))
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd("serpantinum msg toggle launcher"))
 hl.bind( "SUPER + SHIFT + L", hl.dsp.exec_cmd("serpantinum lock"), { repeating = true, locked = true })
 

@@ -69,8 +69,6 @@ configuration {
     drun-use-gio:           false;
 }
 
-/* --- Import Colors --- */
-@import "../../.config/matugen/generated/rofi-colors.rasi"
 
 * {
     /* =====================================================================
@@ -275,3 +273,7 @@ element alternate.urgent {
     background-color: @urgent-background;
     text-color:       @urgent-foreground;
 }
+
+// >>> serpantinum theme >>>
+@theme "serpantinum"
+// <<< serpantinum theme <<<

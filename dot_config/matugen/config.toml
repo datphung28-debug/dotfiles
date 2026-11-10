@@ -23,10 +23,6 @@ post_hook   = '''
    gsettings set org.gnome.desktop.interface icon-theme "Papirus-White" || :
 '''
 
-[templates.rofi]
-input_path  = '~/.config/matugen/templates/rofi-colors.rasi'
-output_path = '~/.config/matugen/generated/rofi-colors.rasi'
-
 [templates.hyprland]
 input_path  = '~/.config/matugen/templates/hyprland-colors.lua'
 output_path = '~/.config/matugen/generated/hyprland-colors.lua'
