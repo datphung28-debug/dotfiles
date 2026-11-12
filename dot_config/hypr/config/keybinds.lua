@@ -71,7 +71,7 @@ hl.bind(
 )
 
 hl.bind(
-  "SUPER + F",
+  mainMod .." + SHIFT + F",
   hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }),
   { description = "Window Fullscreen" }
 )

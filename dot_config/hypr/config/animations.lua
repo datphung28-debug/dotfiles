@@ -1,24 +1,42 @@
-hl.curve("overshot", { type = "bezier", points = { {0.05, 0.9}, {0.1, 1.1} } })
-hl.curve("fluid", { type = "bezier", points = { {0.25, 1}, {0, 1} } })
-hl.curve("snap", { type = "bezier", points = { {0.5, 0.9}, {0.1, 1.05} } })
-hl.curve("menu_decel", { type = "bezier", points = { {0.1, 1}, {0, 1} } })
-hl.curve("liner", { type = "bezier", points = { {1, 1}, {1, 1} } })
+hl.curve( "smoothzz", { type = "bezier", points = { {0.2, 0.9}, {0.2, 1} } })
 
-hl.animation({ leaf = "windowsIn", enabled = true, speed = 7, bezier = "overshot", style = "popin 80%" })
-hl.animation({ leaf = "windowsOut", enabled = true, speed = 5, bezier = "snap", style = "popin 80%" })
-hl.animation({ leaf = "windowsMove", enabled = true, speed = 7, bezier = "overshot", style = "slide" })
+-- Window
+hl.animation({ leaf = "windows", enabled = true, duration = 1, speed = 6, bezier = "smoothzz", style = "slide" })
+hl.animation({ leaf = "windowsIn", enabled = true, duration = 1, speed = 6, bezier = "smoothzz", style = "slide" })
+hl.animation({ leaf = "windowsOut", enabled = true, duration = 1, speed = 12, bezier = "smoothzz", style = "slide" })
+hl.animation({ leaf = "windowsMove", enabled = true, duration = 1, speed = 8, bezier = "smoothzz" })
 
-hl.animation({ leaf = "border", enabled = true, speed = 2, bezier = "liner" })
-hl.animation({ leaf = "borderangle", enabled = true, speed = 40, bezier = "liner", style = "once" })
-hl.animation({ leaf = "fade", enabled = true, speed = 5, bezier = "fluid" })
+-- Layer
+hl.animation({ leaf = "layers", enabled = true, duration = 1, speed = 8, bezier = "smoothzz" })
+hl.animation({ leaf = "layersIn", enabled = true, duration = 1, speed = 8, bezier = "smoothzz" })
+hl.animation({ leaf = "layersOut", enabled = true, duration = 1, speed = 8, bezier = "smoothzz" })
 
-hl.animation({ leaf = "layersIn", enabled = true, speed = 6, bezier = "overshot", style = "popin 70%" })
-hl.animation({ leaf = "fadeLayersIn", enabled = true, speed = 5, bezier = "menu_decel" })
-hl.animation({ leaf = "fadeLayersOut", enabled = true, speed = 4, bezier = "menu_decel" })
+-- Fade effects
+hl.animation({ leaf = "fade", enabled = true, duration = 1, speed = 6, bezier = "default" })
+hl.animation({ leaf = "fadeIn", enabled = true, duration = 1, speed = 6, bezier = "default" })
+hl.animation({ leaf = "fadeOut", enabled = true, duration = 1, speed = 6, bezier = "default" })
+hl.animation({ leaf = "fadeSwitch", enabled = true, duration = 1, speed = 6, bezier = "default" })
+hl.animation({ leaf = "fadeShadow", enabled = true, duration = 1, speed = 6, bezier = "default" })
+hl.animation({ leaf = "fadeDim", enabled = true, duration = 1, speed = 6, bezier = "default" })
+hl.animation({ leaf = "fadePopups", enabled = true, duration = 1, speed = 6, bezier = "default" })
+hl.animation({ leaf = "fadePopupsIn", enabled = true, duration = 1, speed = 6, bezier = "default" })
+hl.animation({ leaf = "fadePopupsOut", enabled = true, duration = 1, speed = 6, bezier = "default" })
 
--- Fix for screenshot gray capture
-hl.animation({ leaf = "layersOut", enabled = false })
+-- DPMS & BORDER
+hl.animation({ leaf = "fadeDpms", enabled = true, duration = 1, speed = 20, bezier = "default" })
+hl.animation({ leaf = "border", enabled = true, duration = 1, speed = 10, bezier = "default" })
+hl.animation({ leaf = "borderangle", enabled = true, duration = 1, speed = 30, bezier = "default", loop = true })
 
--- FOR HORIZONTAL DUSKY:
-hl.animation({ leaf = "workspaces", enabled = true, speed = 8, bezier = "overshot", style = "slide" })
-hl.animation({ leaf = "specialWorkspace", enabled = true, speed = 8, bezier = "overshot", style = "slidevert" })
+-- Workspaces
+hl.animation({ leaf = "workspaces", enabled = true, duration = 1, speed = 10, bezier = "smoothzz", style = "slide" })
+hl.animation({ leaf = "workspacesIn", enabled = true, duration = 1, speed = 10, bezier = "smoothzz", style = "slide" })
+hl.animation({ leaf = "workspacesOut", enabled = true, duration = 1, speed = 10, bezier = "smoothzz", style = "slide" })
+
+-- Special workspace
+hl.animation({ leaf = "specialWorkspace", enabled = true, duration = 1, speed = 6, bezier = "smoothzz", style = "fade" })
+hl.animation({ leaf = "specialWorkspaceIn", enabled = true, duration = 1, speed = 6, bezier = "smoothzz", style = "fade" })
+hl.animation({ leaf = "specialWorkspaceOut", enabled = true, duration = 1, speed = 8, bezier = "smoothzz", style = "fade" })
+
+-- Others
+hl.animation({ leaf = "zoomFactor", enabled = true, duration = 1, speed = 6, bezier = "smoothzz" })
+hl.animation({ leaf = "monitorAdded", enabled = true, duration = 1, speed = 6, bezier = "smoothzz" })

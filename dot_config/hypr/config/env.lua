@@ -6,7 +6,7 @@ hl.env("XDG_SESSION_DESKTOP", "Hyprland")
 -- Wayland
 hl.env("SDL_VIDEODRIVER", "wayland")
 
--- Fcitx5
+-- Fcitx
 hl.env("XMODIFIERS", "@im=fcitx")
 hl.env("GTK_IM_MODULE", "fcitx")
 hl.env("QT_IM_MODULE", "fcitx")

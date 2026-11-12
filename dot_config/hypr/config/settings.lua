@@ -22,20 +22,22 @@ hl.config({
 
     blur = {
       enabled = true,
-      size = 30,
+      size = 20,
       passes = 3,
+      brightness = 0.6,
+      vibrancy = 0.5,
       ignore_opacity = true,
-
-      noise = 0.08,
-      contrast = 1.5,
-
+      noise = 0.05,
+      contrast = 1.4,
+      special = false,
+      input_methods = true,
       new_optimizations = true,
     },
 
     shadow = {
       enabled = true,
       range = 20,
-      render_power = 3,
+      render_power = 4,
       color = shadow or "rgba(1a1a1aee)",
     },
 
