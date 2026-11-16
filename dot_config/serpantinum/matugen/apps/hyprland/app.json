@@ -1,0 +1,20 @@
+{
+  "name": "Hyprland",
+  "category": "system",
+  "icon": "",
+  "default": true,
+  "detect": {
+    "bin": [
+      "hyprctl"
+    ]
+  },
+  "templates": [
+    {
+      "input": "serpantinum-colors.lua",
+      "output": "$XDG_CONFIG_HOME/hypr/serpantinum-colors.lua"
+    }
+  ],
+  "reload": [
+    "hyprctl reload config-only"
+  ]
+}
