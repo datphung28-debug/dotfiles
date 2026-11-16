@@ -1,7 +1,7 @@
 HOME = os.getenv("HOME")
 
 -- Load matugen colors globally (dusky style)
-pcall(dofile, HOME .. "/.config/matugen/generated/hyprland-colors.lua")
+pcall(dofile, HOME .. "/.config/hypr/serpantinum-colors.lua")
 
 require("config/env")
 require("config/autostart")
