@@ -11,6 +11,3 @@ require("config/keybinds")
 require("config/animations")
 require("config/layout")
 require("config/window_rules")
-
--- HyprMod managed settings
-require("hyprland-gui")

@@ -20,7 +20,8 @@ alias lt='eza --icons=auto --tree'
 alias home="cd ~"
 alias g='git'
 alias le='live-server'
-alias czm='chezmoi'
+alias pn='pnpm'
+alias cz='chezmoi'
 command -qv nvim && alias vim nvim
 
 alias ..='cd ..'
