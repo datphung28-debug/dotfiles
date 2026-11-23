@@ -12,11 +12,11 @@ hl.monitor({
   scale = 1.0,
 })
 
-for i = 1, 10 do
-  local monitor_name = (i % 2 == 1) and "eDP-1" or "HDMI-A-1"
-  hl.workspace_rule({
-    workspace = tostring(i),
-    monitor = monitor_name,
-    persistent = true,
-  })
-end
+-- for i = 1, 10 do
+--   local monitor_name = (i % 2 == 1) and "eDP-1" or "HDMI-A-1"
+--   hl.workspace_rule({
+--     workspace = tostring(i),
+--     monitor = monitor_name,
+--     persistent = true,
+--   })
+-- end

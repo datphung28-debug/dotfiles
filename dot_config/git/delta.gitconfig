@@ -1,4 +1,8 @@
+[core]
+    pager = delta
+
 [delta]
+    true-color = always
     line-numbers = true
     side-by-side = false
     features = decorations

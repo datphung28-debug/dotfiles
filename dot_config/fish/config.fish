@@ -22,6 +22,7 @@ alias g='git'
 alias le='live-server'
 alias pn='pnpm'
 alias cz='chezmoi'
+alias notes='cd ~/Documents/My_Notes/'
 command -qv nvim && alias vim nvim
 
 alias ..='cd ..'
