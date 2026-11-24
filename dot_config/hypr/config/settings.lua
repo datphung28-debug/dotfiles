@@ -53,6 +53,7 @@ hl.config({
     -- Keyboard --
     kb_layout = "us",
     numlock_by_default = false,
+    -- Keyboard remapping is handled by Kanata.
     kb_options = "",
     repeat_rate = 25,
     repeat_delay = 180,
