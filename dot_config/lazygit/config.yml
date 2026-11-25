@@ -16,29 +16,29 @@ gui:
   scrollHeight: 30
   theme:
     activeBorderColor:
-      - "#fbb974"
+      - "#f7bb70"
       - bold
     inactiveBorderColor:
-      - "#9d8e81"
+      - "#9c8e80"
     searchingActiveBorderColor:
-      - "#bfcc9b"
+      - "#bacd9f"
       - bold
     optionsTextColor:
-      - "#e1c1a3"
+      - "#dec2a2"
     selectedLineBgColor:
       - "#303030"
     inactiveViewSelectedLineBgColor:
-      - "#211a14"
+      - "#211a13"
     cherryPickedCommitFgColor:
-      - "#2a3411"
+      - "#263514"
     cherryPickedCommitBgColor:
-      - "#bfcc9b"
+      - "#bacd9f"
     markedBaseCommitFgColor:
-      - "#402c18"
+      - "#3f2d17"
     markedBaseCommitBgColor:
-      - "#e1c1a3"
+      - "#dec2a2"
     unstagedChangesColor:
       - "#ffb4ab"
     defaultFgColor:
-      - "#eee0d5"
+      - "#eee0d4"
 # <<< serpantinum theme <<<

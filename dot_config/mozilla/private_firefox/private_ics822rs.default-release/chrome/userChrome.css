@@ -1,0 +1,286 @@
+/* =========================================================
+   userChrome.css — Firefox UI customization
+   Profile: ics822rs.default-release
+   Layout: URL/search bar (LEFT) + tabs (RIGHT) on the SAME row
+   Background: #ffffff
+   ========================================================= */
+
+/* Base color for the theme (forced to pure white) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --accent-color: #ffffff;
+    color-scheme: light; /* force light chrome so text/icons stay readable on white */
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --accent-color: #ffffff;
+    color-scheme: light; /* keeps chrome text/icons readable on white */
+  }
+}
+
+/* Dark gray for the URL/search box and the tabs */
+:root {
+  --box-bg: #ffffff;          /* normal */
+  --box-bg-hover: #f2f2f2;    /* tab hover */
+  --box-bg-selected: #ffffff; /* active tab */
+  --box-text: #000000;        /* text/icons inside the boxes */
+  --box-border: #cccccc;      /* border color */
+}
+
+/*====== Aesthetics ======*/
+
+#navigator-toolbox {
+  border-bottom: none !important;
+  background: #ffffff !important;
+}
+
+/* Tab strip (Firefox 159 has no #titlebar anymore) */
+#TabsToolbar {
+  background: var(--accent-color) !important;
+}
+
+/* Sets the toolbar color */
+toolbar#nav-bar {
+  background: var(--accent-color) !important;
+  box-shadow: none !important;
+}
+
+/* Sets the URL bar color (white, black text, dark border, square corners) */
+#urlbar {
+  background: var(--box-bg) !important;
+  color: var(--box-text) !important;
+  border-radius: 0 !important;
+  --toolbar-field-background-color: var(--box-bg) !important;
+  --toolbar-field-focus-background-color: var(--box-bg) !important;
+  --toolbar-field-text-color: var(--box-text) !important;
+  --toolbar-field-text-color-focus: var(--box-text) !important;
+  --toolbar-field-border-color: var(--box-border) !important;
+  --toolbar-field-border-color-focus: var(--box-border) !important;
+  --urlbar-background-color: var(--box-bg) !important;
+  --urlbar-background-color-focus: var(--box-bg) !important;
+  --urlbar-background-outline-focused: none !important;
+  /* 8px rounded corners everywhere (box + results dropdown) */
+  --urlbar-border-radius: 8px !important;
+  --urlbar-inner-border-radius: 8px !important;
+  --urlbar-background-border-radius: 8px !important;
+  --urlbar-background-border-top-radius-open: 8px !important;
+  --urlbarview-border-radius: 8px !important;
+}
+
+#urlbar-background,
+.urlbar-background,
+#urlbar[breakout][breakout-extend] > #urlbar-background,
+#urlbar[breakout][breakout-extend] > .urlbar-background {
+  background: var(--box-bg) !important;
+  border: 1px solid transparent !important; /* border only while in use */
+  border-radius: 8px !important;
+  box-shadow: none !important;
+}
+
+/* Show the border only when the search box is focused / open */
+#urlbar[focused] > #urlbar-background,
+#urlbar[open] > #urlbar-background,
+#urlbar[breakout-extend] > #urlbar-background,
+#urlbar[focused] > .urlbar-background,
+#urlbar[open] > .urlbar-background,
+#urlbar[breakout-extend] > .urlbar-background,
+#urlbar:focus-within > .urlbar-background {
+  border-color: var(--box-border) !important;
+}
+
+#urlbar-input-container {
+  border: none !important;
+  border-radius: 8px !important;
+}
+
+/*====== Tabs: 8px corners, white, black text, border on active tab only ======*/
+
+#tabbrowser-tabs {
+  --tab-border-radius: 8px !important;
+  --tab-background-color: var(--box-bg) !important;
+  --tab-background-color-hover: var(--box-bg-hover) !important;
+  --tab-background-color-selected: var(--box-bg-selected) !important;
+  --tab-text-color: var(--box-text) !important;
+  --tab-text-color-hover: var(--box-text) !important;
+  --tab-text-color-selected: var(--box-text) !important;
+  --tab-border-color: transparent !important;
+  --tab-border-color-hover: transparent !important;
+  --tab-border-color-selected: var(--box-border) !important;
+}
+
+.tabbrowser-tab,
+.tab-background {
+  border-radius: 8px !important;
+}
+
+.tab-background {
+  border: 1px solid transparent !important; /* no border on inactive tabs */
+}
+
+/* Active tab: show the dark border */
+.tabbrowser-tab[selected] .tab-background {
+  border-color: var(--box-border) !important;
+}
+
+.tab-close-button {
+  color: var(--box-text) !important;
+}
+
+/* New-tab "+" button: rounded to match the tabs */
+#tabs-newtab-button,
+#new-tab-button {
+  border-radius: 8px !important;
+}
+
+/*====== UI Settings ======*/
+
+:root {
+  --navbarWidth: 500px; /* Set width of navbar (URL/search bar) */
+}
+
+/* The collapsed menu bar is still a flex item (height 0 but ~570px wide),
+   which pushes the URL bar away from the left edge. Hide it while inactive. */
+#toolbar-menubar[autohide][inactive] {
+  display: none !important;
+}
+
+/* If the menu bar is opened (Alt), give it its own full-width row */
+#toolbar-menubar:not([inactive]) {
+  order: -1 !important;
+  flex: 0 0 100% !important;
+}
+
+/* If the window is wider than 1000px, use flex layout: URL bar + tabs on one row */
+@media (min-width: 1000px) {
+  #navigator-toolbox {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: flex-start !important;
+    padding-inline-start: 0 !important;
+  }
+
+  /* Url bar (LEFT, flush with the window edge) */
+  #nav-bar {
+    order: 1;
+    width: var(--navbarWidth) !important;
+    min-width: var(--navbarWidth) !important;
+    max-width: var(--navbarWidth) !important;
+    flex: 0 0 var(--navbarWidth) !important;
+    margin-inline-start: 0 !important;
+  }
+
+  /* Tab bar (RIGHT, same row, fills all remaining width) */
+  #TabsToolbar {
+    order: 2;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    flex: 1 1 auto !important;
+    margin-inline-start: 0 !important;
+  }
+
+  /* Let the tab strip use all the space of the tab bar */
+  #TabsToolbar > .toolbar-items,
+  #TabsToolbar-customization-target {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+  }
+
+  #tabbrowser-tabs {
+    min-width: 0 !important;
+  }
+
+  /* Bookmarks bar on its own row below */
+  #PersonalToolbar {
+    order: 3;
+    width: 100% !important;
+    flex: 0 0 100% !important;
+  }
+
+  /* Fix urlbar sometimes being misaligned */
+  :root[uidensity="compact"] #urlbar {
+    --urlbar-toolbar-height: 39.6px !important;
+  }
+
+  :root[uidensity="touch"] #urlbar {
+    --urlbar-toolbar-height: 49px !important;
+  }
+}
+
+/*====== Simplifying interface ======*/
+
+/* Autohide back button when disabled */
+#back-button,
+#forward-button {
+  transform: scale(1, 1) !important;
+  transition:
+    margin-left 150ms var(--animation-easing-function),
+    opacity 250ms var(--animation-easing-function),
+    transform 350ms var(--animation-easing-function) !important;
+}
+
+#back-button[disabled="true"],
+#forward-button[disabled="true"] {
+  margin-left: -34px !important;
+  opacity: 0 !important;
+  transform: scale(0.8, 0.8) !important;
+  pointer-events: none !important;
+}
+
+/* Remove UI elements */
+#identity-box, /* Site information */
+#tracking-protection-icon-container, /* Shield icon */
+#urlbar-zoom-button, /* Zoom percentage */
+#page-action-buttons > :not(#urlbar-zoom-button, #star-button-box), /* All other url bar icons except bookmarks */
+#urlbar-go-button, /* Search URL magnifying glass */
+#alltabs-button /* Menu to display all tabs at the end of tabs bar */ {
+  display: none !important;
+}
+
+/* Hide the window close button (the round "x" at the far right) */
+.titlebar-close,
+.titlebar-button.titlebar-close {
+  display: none !important;
+}
+
+/* Uncomment to hide ALL window buttons (minimize / maximize / close):
+.titlebar-buttonbox-container { display: none !important; }
+*/
+
+#nav-bar {
+  box-shadow: none !important;
+}
+
+/* Remove "padding" left and right from tabs */
+.titlebar-spacer {
+  display: none !important;
+}
+
+/* Fix URL bar overlapping elements */
+#urlbar-container {
+  min-width: initial !important;
+}
+
+/* Remove gap after pinned tabs */
+#tabbrowser-tabs[haspinnedtabs]:not([positionpinnedtabs])
+  > #tabbrowser-arrowscrollbox
+  > .tabbrowser-tab[first-visible-unpinned-tab] {
+  margin-inline-start: 0 !important;
+}
+
+/* Hide the hamburger menu */
+#PanelUI-menu-button {
+  padding: 0px !important;
+}
+
+#PanelUI-menu-button .toolbarbutton-icon {
+  width: 1px !important;
+}
+
+#PanelUI-menu-button .toolbarbutton-badge-stack {
+  padding: 0px !important;
+}
