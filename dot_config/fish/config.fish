@@ -1,4 +1,3 @@
-
 source /usr/share/cachyos-fish-config/cachyos-config.fish
 
 set fish_greeting ""
@@ -19,6 +18,7 @@ alias ll='eza -lha --icons=auto --sort=name --group-directories-first'
 alias ld='eza -lhD --icons=auto'
 alias lt='eza --icons=auto --tree'
 alias home="cd ~"
+alias config="cd ~/.config/"
 alias g='git'
 alias le='live-server'
 alias pn='pnpm'

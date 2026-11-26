@@ -2,38 +2,50 @@
    userChrome.css — Firefox UI customization
    Profile: ics822rs.default-release
    Layout: URL/search bar (LEFT) + tabs (RIGHT) on the SAME row
-   Background: #ffffff
+   Background: #000000
    ========================================================= */
 
-/* Base color for the theme (forced to pure white) */
+/* Base color for the theme (forced to pure black) */
 @media (prefers-color-scheme: dark) {
   :root {
-    --accent-color: #ffffff;
-    color-scheme: light; /* force light chrome so text/icons stay readable on white */
+    --accent-color: #000000;
+    color-scheme: dark; /* force dark chrome so text/icons stay readable on black */
   }
 }
 
 @media (prefers-color-scheme: light) {
   :root {
-    --accent-color: #ffffff;
-    color-scheme: light; /* keeps chrome text/icons readable on white */
+    --accent-color: #000000;
+    color-scheme: dark; /* keeps chrome text/icons readable on black */
   }
 }
 
-/* Dark gray for the URL/search box and the tabs */
+/* Black for the URL/search box and tabs, with readable contrast */
 :root {
-  --box-bg: #ffffff;          /* normal */
-  --box-bg-hover: #f2f2f2;    /* tab hover */
-  --box-bg-selected: #ffffff; /* active tab */
-  --box-text: #000000;        /* text/icons inside the boxes */
-  --box-border: #cccccc;      /* border color */
+  --box-bg: #000000;          /* normal */
+  --box-bg-hover: #1a1a1a;    /* tab hover */
+  --box-bg-selected: #000000; /* active tab */
+  --box-text: #ffffff;        /* text/icons inside the boxes */
+  --box-border: #8a8a8a;      /* visible border on black */
+  --chrome-content-separator-color: #000000 !important;
 }
 
 /*====== Aesthetics ======*/
 
 #navigator-toolbox {
   border-bottom: none !important;
-  background: #ffffff !important;
+  background: #000000 !important;
+  border-color: #000000 !important;
+  box-shadow: 0 1px #000000 !important;
+}
+
+/* Remove Firefox's separator under the chrome so the toolbar and page meet cleanly */
+#navigator-toolbox::after,
+#TabsToolbar,
+#nav-bar {
+  border-bottom: none !important;
+  box-shadow: none !important;
+  border-color: #000000 !important;
 }
 
 /* Tab strip (Firefox 159 has no #titlebar anymore) */
@@ -47,7 +59,7 @@ toolbar#nav-bar {
   box-shadow: none !important;
 }
 
-/* Sets the URL bar color (white, black text, dark border, square corners) */
+/* Sets the URL bar color (black, white text, visible border) */
 #urlbar {
   background: var(--box-bg) !important;
   color: var(--box-text) !important;
@@ -95,7 +107,7 @@ toolbar#nav-bar {
   border-radius: 8px !important;
 }
 
-/*====== Tabs: 8px corners, white, black text, border on active tab only ======*/
+/*====== Tabs: 8px corners, black, white text, border on active tab only ======*/
 
 #tabbrowser-tabs {
   --tab-border-radius: 8px !important;
@@ -138,6 +150,33 @@ toolbar#nav-bar {
 
 :root {
   --navbarWidth: 500px; /* Set width of navbar (URL/search bar) */
+}
+
+/* Keep Firefox's Extensions menu (unpinned extensions) beside the URL box */
+#nav-bar-customization-target {
+  display: flex !important;
+  min-width: 0 !important;
+}
+
+#urlbar-container {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+}
+
+#unified-extensions-button {
+  display: flex !important;
+  flex: 0 0 auto !important;
+  order: 2 !important;
+  color: var(--box-border) !important;
+  fill: var(--box-border) !important;
+}
+
+/* Match the Downloads icon to the Extensions icon */
+#downloads-button,
+#downloads-button .toolbarbutton-icon,
+#unified-extensions-button .toolbarbutton-icon {
+  color: var(--box-border) !important;
+  fill: var(--box-border) !important;
 }
 
 /* The collapsed menu bar is still a flex item (height 0 but ~570px wide),
